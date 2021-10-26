@@ -1,0 +1,33 @@
+<div class="jumbtron py-3">
+    <h1 class="display-4 text-center">Quản lý Nhân Viên</h1>    
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <app-empl-man-form></app-empl-man-form>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="thead-ligth">
+                <tr>
+                    <th>Mã Nhân viên</th>
+                    <th>Tên Nhân viên</th>
+                    <th>Địa chỉ</th>
+                    <th>Phòng ban</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empl of service.empl_lst">
+                    <td (click)="populateForm(empl)">{{empl.empl_id}}</td>
+                    <td (click)="populateForm(empl)">{{empl.empl_nm}}</td>
+                    <td (click)="populateForm(empl)">{{empl.empl_adr}}</td>
+                    <td (click)="populateForm(empl)">{{empl.empl_dep}}</td>
+                    <td>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="delEmp(empl.id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

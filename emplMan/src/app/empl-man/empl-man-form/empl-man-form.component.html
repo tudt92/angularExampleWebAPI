@@ -1,0 +1,30 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="id"
+    [value]="service.formData.id" />
+    <div class="form-group">
+        <label>Mã Nhân viên</label>
+        <input class="form-control form-control-lg" placeholder="Employee ID"
+        name="empl_id" #empl_id="ngModel" [(ngModel)]="service.formData.empl_id"
+        required [class.invalid]="empl_id.invalid && empl_id.touched">
+    </div>
+    <div class="form-group">
+        <label>Tên Nhân viên</label>
+        <input class="form-control form-control-lg" placeholder="Employee Name"
+        name="empl_nm" #empl_nm="ngModel" [(ngModel)]="service.formData.empl_nm"
+        required [class.invalid]="empl_nm.invalid && empl_nm.touched">
+    </div>
+    <div class="form-group">
+        <label>Địa chỉ</label>
+        <input class="form-control form-control-lg" placeholder="Employee Adress"
+        name="empl_adr" #empl_adr="ngModel" [(ngModel)]="service.formData.empl_adr">
+    </div>
+    <div class="form-group">
+        <label>Phòng ban</label>
+        <input class="form-control form-control-lg" placeholder="Employee Department"
+        name="empl_dep" #empl_dep="ngModel" [(ngModel)]="service.formData.empl_dep"
+        required [class.invalid]="empl_dep.invalid && empl_dep.touched">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Lưu</button>
+    </div>
+</form>
