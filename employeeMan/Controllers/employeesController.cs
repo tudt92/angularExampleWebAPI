@@ -24,7 +24,7 @@ namespace employeeMan.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<employee>>> Getemployees()
         {
-            return await _context.employees.ToListAsync();
+            return await _context.employees.OrderBy(i => i.empl_id).ToListAsync();
         }
 
         // GET: api/employees/5
