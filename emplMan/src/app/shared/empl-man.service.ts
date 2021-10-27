@@ -15,7 +15,8 @@ export class EmplManService {
   empl_lst:EmplMan[];
 
   postEmployee() {
-    this.formData.id = Guid.create().toString();
+    //return;
+    this.formData.id = this.createId();
     console.log(`insert ${this.formData.id}`);
     return this.http.post(this.baseUrl, this.formData);
   }
@@ -34,5 +35,20 @@ export class EmplManService {
     this.http.get(this.baseUrl)
     .toPromise()
     .then(res => this.empl_lst = res as EmplMan[])
+  }
+
+  createId() {
+    let id_Valid = Guid.create().toString();
+    console.log(id_Valid);
+    this.http.get(`${this.baseUrl}/${id_Valid}`)
+    .subscribe(
+      res => {
+        this.createId();
+      },
+      err => {
+        
+      }
+    );
+    return id_Valid;
   }
 }
